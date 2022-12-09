@@ -15,12 +15,25 @@ a {
   box-sizing: border-box;
 }
 
+:root{
+  --primaryColor:#0070f3;
+  --secundaryColor:white;
+  --tertiaryColor:black;
+  --fontColor:white;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color: var(--tertiaryColor);
+    background: var(--secundaryColor);
+  }
+  :root{
+    --primaryColor:#0070f3;
+    --secundaryColor:black;
+    --tertiaryColor:white;
+    --fontColor:black;
   }
 }

@@ -1,0 +1,21 @@
+.Button {
+  border-radius: 999px;
+  color: var(--fontColor);
+  background-color: var(--tertiaryColor);
+  border: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: .4rem 1.5rem .4rem 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.Button svg {
+  margin-right: 10px;
+}
+
+.Button:hover {
+  opacity: 0.85;
+}
