@@ -128,7 +128,7 @@ export default function PurchaseForm() {
                   <input placeholder="Cantidad" defaultValue={value.quantity} />
                   <input placeholder="Precio" defaultValue={value.price} />
                   <textarea
-                    placeholder="Descripcion de Compra"
+                    placeholder="Descripcion de Compra Prueba"
                     name=""
                     id=""
                     defaultValue={value.description}
