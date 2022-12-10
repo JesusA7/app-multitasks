@@ -5,9 +5,11 @@ import {
   ChangeEvent,
   HTMLInputTypeAttribute,
   MouseEventHandler,
+  useEffect,
   useState,
 } from "react";
 import { IPurchaseDetail, IPurchase } from "../../interfaces/utilsRobert";
+import Modal from "../../components/modal";
 
 const initialPurchase: IPurchase = {
   purchaseDate: Timestamp.fromDate(new Date(Date.now())),
@@ -39,11 +41,14 @@ function formatDate(date: string) {
 export default function PurchaseForm() {
   const [purchase, SetPurchase] = useState<IPurchase>(initialPurchase);
   const [purchaseDetail, SetPurchaseDetail] = useState<IPurchaseDetail>();
+  const [initializeModal, setInitializeModal] = useState<boolean>(false);
   const handleClickNewDetailPurchase = () => {
-    SetPurchaseDetail(initialPurchaseDetail);
-    purchase.purchaseDetail.push(initialPurchaseDetail);
-    SetPurchase({ ...purchase });
+    // SetPurchaseDetail(initialPurchaseDetail);
+    // purchase.purchaseDetail.push(initialPurchaseDetail);
+    // SetPurchase({ ...purchase });
+    setInitializeModal(!initializeModal);
   };
+
   const handleCLickClose = (index: number) => {
     const purchaseDetail = purchase.purchaseDetail.filter(
       (value) => value.supplyId !== index
@@ -145,6 +150,60 @@ export default function PurchaseForm() {
             })}
         </div>
       </form>
+        <Modal
+          title={"Formulario"}
+          initialize={initializeModal}
+          setInitialize={setInitializeModal}
+          description={"Detalle de la Compra"}
+        >
+          <div className="details_container">
+            <form className="form_details" action="">
+              <input
+                type="text"
+                className={form.inputData}
+                placeholder="Insumo"
+              />
+              <input
+                type="number"
+                className={form.inputData}
+                placeholder="Cantidad"
+              />
+              <input
+                type="number"
+                className={form.inputData}
+                placeholder="Precio"
+              />
+              <textarea className={form.inputData} placeholder="Descripción" />
+              <button className={button.Button}>Guardar</button>
+            </form>
+          </div>
+        </Modal>
+     
+      <style jsx>
+        {`
+          .details_container {
+            padding: 1rem;
+          }
+          .form_details {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+          .form_details input {
+            display: block;
+            padding: 0.5rem;
+            width: 100%;
+            box-sizing: border-box;
+          }
+          .form_details textarea {
+            padding: 0.5rem;
+            overflow-y: scroll;
+            resize: none;
+        `}
+      </style>
     </div>
   );
 }

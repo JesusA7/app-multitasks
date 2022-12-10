@@ -63,12 +63,13 @@
   /* display: block; */
   padding: 1rem;
   font-size: 1rem;
-  background: black;
-  border: 1px solid white;
+  background: var(--secundaryColor);
+  border: 1px solid var(--tertiaryColor);
   border-radius: 0.5rem;
+  
 }
 
 .inputData:hover {
-  border: 1px solid green;
-  color: green;
+  border: 1px solid var(--primaryColor);
+  color: var(--primaryColor);
 }

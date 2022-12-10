@@ -19,7 +19,7 @@ export default function Login() {
 
   useEffect(() => {
     user && router.replace("/home");
-  }, [user]);
+  }, [router, user]);
   
   const handleClick = async () => {
     setUser(await LoginWithGoogle());

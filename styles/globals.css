@@ -21,7 +21,7 @@ a {
   --tertiaryColor:black;
   --fontColor:white;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -36,4 +36,4 @@ a {
     --tertiaryColor:white;
     --fontColor:black;
   }
-}
+} */
