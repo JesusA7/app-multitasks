@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface ModalProps {
   title: string;
   initialize: any;
@@ -14,7 +12,7 @@ export default function Modal({
   setInitialize,
   description,
   children,
-}: ModalProps) {
+}: ModalProps){
   return (
     initialize && (
       <>

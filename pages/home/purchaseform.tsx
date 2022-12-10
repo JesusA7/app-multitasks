@@ -20,10 +20,10 @@ const initialPurchase: IPurchase = {
 };
 
 const initialPurchaseDetail: IPurchaseDetail = {
-  price: 7,
-  quantity: 10,
-  description: "en Kg",
-  supplyId: 4,
+  price: 0,
+  quantity: 0,
+  description: "",
+  supplyId: 0,
   purchaseDetailId: 0,
 };
 function formatDate(date: string) {
@@ -40,7 +40,9 @@ function formatDate(date: string) {
 
 export default function PurchaseForm() {
   const [purchase, SetPurchase] = useState<IPurchase>(initialPurchase);
-  const [purchaseDetail, SetPurchaseDetail] = useState<IPurchaseDetail>();
+  const [purchaseDetail, SetPurchaseDetail] = useState<IPurchaseDetail>(
+    initialPurchaseDetail
+  );
   const [initializeModal, setInitializeModal] = useState<boolean>(false);
   const handleClickNewDetailPurchase = () => {
     // SetPurchaseDetail(initialPurchaseDetail);
@@ -150,35 +152,46 @@ export default function PurchaseForm() {
             })}
         </div>
       </form>
-        <Modal
-          title={"Formulario"}
-          initialize={initializeModal}
-          setInitialize={setInitializeModal}
-          description={"Detalle de la Compra"}
-        >
-          <div className="details_container">
-            <form className="form_details" action="">
-              <input
-                type="text"
-                className={form.inputData}
-                placeholder="Insumo"
-              />
-              <input
-                type="number"
-                className={form.inputData}
-                placeholder="Cantidad"
-              />
-              <input
-                type="number"
-                className={form.inputData}
-                placeholder="Precio"
-              />
-              <textarea className={form.inputData} placeholder="Descripción" />
-              <button className={button.Button}>Guardar</button>
-            </form>
-          </div>
-        </Modal>
-     
+      <Modal
+        title={"Formulario"}
+        initialize={initializeModal}
+        setInitialize={setInitializeModal}
+        description={"Detalle de la Compra"}
+      >
+        <div className="details_container">
+          <form className="form_details" action="">
+            <select title="supply" className={form.inputData} name="supplyId">
+              <option hidden selected>
+                Selecciona Insumo
+              </option>
+              <option value={1}>Especias</option>
+              <option value={2}>Cocina</option>
+            </select>
+            <input
+              name="quantity"
+              type="number"
+              className={form.inputData}
+              placeholder="Cantidad"
+              defaultValue={""}
+            />
+            <input
+              name="price"
+              type="number"
+              className={form.inputData}
+              placeholder="Precio"
+              defaultValue={""}
+            />
+            <textarea
+              name="description"
+              className={form.inputData}
+              placeholder="Descripción"
+              defaultValue={purchaseDetail.description}
+            />
+            <button className={button.Button}>Guardar</button>
+          </form>
+        </div>
+      </Modal>
+
       <style jsx>
         {`
           .details_container {
@@ -200,8 +213,9 @@ export default function PurchaseForm() {
           }
           .form_details textarea {
             padding: 0.5rem;
-            overflow-y: scroll;
+            overflow: auto;
             resize: none;
+            
         `}
       </style>
     </div>
